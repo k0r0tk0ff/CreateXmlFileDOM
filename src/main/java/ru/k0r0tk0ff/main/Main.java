@@ -44,7 +44,7 @@ public class Main {
 
         // save xml to file
 
-        // 1 method
+        // 1 method create temp.xml (encoding UTF-8)
         Transformer t = TransformerFactory.newInstance().newTransformer();
         t.setOutputProperty(OutputKeys.INDENT, "yes");
         t.transform(new DOMSource(document),
@@ -54,6 +54,7 @@ public class Main {
         );
 
         // 2 method (we can create String variable with xml)
+        // create temp2.xml (encoding UTF-8)
         // create String with xml from document
         DOMImplementation impl = document.getImplementation();
         DOMImplementationLS implLS = (DOMImplementationLS)impl.getFeature("LS", "3.0");
@@ -69,6 +70,7 @@ public class Main {
         //out.setByteStream(Files.newOutputStream(Paths.get("temp2.xml")));
         out.setByteStream(new FileOutputStream( new File("temp2.xml")));
         ser.write(document, out);
-
+        String string2 = ser.writeToString(document);
+        System.out.println(string2);
     }
 }
